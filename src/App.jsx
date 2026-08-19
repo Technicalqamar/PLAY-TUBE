@@ -6,7 +6,7 @@ import { Home } from './pages/Home/Home'
 import { Search } from './pages/Search/Search'
 import { VideoPlayer } from './pages/VideoPlayer/VideoPlayer'
 import { Saved } from './pages/Saved/Saved'
-import './App.css'
+import './app.css'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
