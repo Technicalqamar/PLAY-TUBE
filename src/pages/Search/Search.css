@@ -1,0 +1,152 @@
+.search {
+  padding: 24px 28px 56px;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 60vh;
+}
+
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.results-heading {
+  margin-bottom: 22px;
+}
+
+.results-heading h2 {
+  margin: 0 0 4px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+.results-query {
+  color: var(--accent-bright);
+}
+
+.results-count {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Loading State */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 16px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+.loader {
+  width: 42px;
+  height: 42px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+  gap: 10px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 24px;
+}
+
+.empty-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  border: 1px solid rgba(134, 59, 255, 0.35);
+  color: var(--accent-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.empty-state h2 {
+  margin: 0;
+  font-size: 24px;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.empty-state p strong {
+  color: var(--text-secondary);
+}
+
+.empty-action {
+  margin-top: 14px;
+  padding: 10px 22px;
+  background: var(--accent-grad);
+  border: none;
+  border-radius: var(--radius-pill);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.empty-action:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 20px rgba(134, 59, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+  .search {
+    padding: 16px 14px 40px;
+  }
+
+  .results-heading h2 {
+    font-size: 19px;
+  }
+
+  .empty-state h2 {
+    font-size: 21px;
+  }
+
+  .empty-state p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search {
+    padding: 14px 12px 32px;
+  }
+
+  .empty-icon {
+    width: 76px;
+    height: 76px;
+  }
+}

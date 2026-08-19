@@ -1,0 +1,124 @@
+.sidebar {
+  position: fixed;
+  left: -280px;
+  top: 64px;
+  width: 280px;
+  height: calc(100vh - 64px);
+  background-color: var(--bg-elevated);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: left 0.3s ease;
+  z-index: 99;
+}
+
+.sidebar.open {
+  left: 0;
+  box-shadow: 24px 0 48px rgba(0, 0, 0, 0.45);
+}
+
+.sidebar-nav {
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.nav-section-bottom {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  position: relative;
+}
+
+.nav-item:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.nav-item.active {
+  background: var(--accent-soft);
+  border-color: rgba(134, 59, 255, 0.45);
+  color: var(--accent-bright);
+  font-weight: 600;
+}
+
+.nav-icon {
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-text {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-footer {
+  margin-top: auto;
+  padding: 14px 14px 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Desktop layout - sidebar visible */
+@media (min-width: 1200px) {
+  .sidebar {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 240px;
+    height: auto;
+    border-right: 1px solid var(--border);
+    border-bottom: none;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 260px;
+    left: -260px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+    left: -100%;
+    top: 56px;
+    height: calc(100vh - 56px);
+  }
+
+  .nav-item {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+}
