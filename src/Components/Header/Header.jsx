@@ -1,13 +1,35 @@
 import './Header.css'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
+
+const getInitialTheme = () => {
+  try {
+    const stored = localStorage.getItem('playtube-theme')
+    if (stored === 'light' || stored === 'dark') return stored
+  } catch { /* ignore */ }
+  return 'dark'
+}
 
 export const Header = ({ onSearch, onMenuToggle }) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false)
   const [dotsOpen, setDotsOpen] = useState(false)
+  const [theme, setTheme] = useState(getInitialTheme)
   const dotsRef = useRef(null)
   const navigate = useNavigate()
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark'
+      document.documentElement.setAttribute('data-theme', next)
+      try { localStorage.setItem('playtube-theme', next) } catch { /* ignore */ }
+      return next
+    })
+  }, [])
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', getInitialTheme())
+  }, [])
 
   useEffect(() => {
     if (!dotsOpen) return
@@ -108,13 +130,28 @@ export const Header = ({ onSearch, onMenuToggle }) => {
                 <circle cx="12" cy="19" r="1.6" />
               </svg>
             </button>
-            {dotsOpen && (
-              <div className="dots-dropdown">
-                <button type="button" className="dots-dropdown-item" onClick={() => { setDotsOpen(false) }}>Login</button>
-                <button type="button" className="dots-dropdown-item dots-dropdown-accent" onClick={() => { setDotsOpen(false) }}>Sign up</button>
-              </div>
-            )}
+            <div className="dots-dropdown dots-dropdown--mobile-only">
+              <button type="button" className="dots-dropdown-item" onClick={() => { setDotsOpen(false) }}>Login</button>
+              <button type="button" className="dots-dropdown-item dots-dropdown-accent" onClick={() => { setDotsOpen(false) }}>Sign up</button>
+              <div className="dots-dropdown-divider" />
+              <button type="button" className="dots-dropdown-item" onClick={() => { toggleTheme(); setDotsOpen(false) }}>
+                {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+              </button>
+            </div>
           </div>
+
+          <button type="button" className="theme-toggle-btn" onClick={toggleTheme} aria-label="Toggle theme">
+            {theme === 'dark' ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="5" />
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            )}
+          </button>
 
           <button type="button" className="login-btn">
             Login

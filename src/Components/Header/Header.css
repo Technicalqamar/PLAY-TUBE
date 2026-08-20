@@ -224,6 +224,15 @@
     display: none;
   }
 
+  .menu-dots,
+  .dots-wrapper {
+    display: none;
+  }
+
+  .theme-toggle-btn {
+    display: flex;
+  }
+
   .header-actions {
     gap: 2px;
   }
@@ -362,6 +371,26 @@
   }
 }
 
+/* Theme toggle button */
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--surface-hover);
+  color: var(--text);
+}
+
 /* Three-dot dropdown */
 .dots-wrapper {
   position: relative;
@@ -407,4 +436,17 @@
 
 .dots-dropdown-accent {
   color: var(--accent-bright);
+}
+
+.dots-dropdown-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 8px;
+}
+
+/* Desktop: hide dots dropdown (three-dot does nothing on desktop) */
+@media (min-width: 769px) {
+  .dots-dropdown--mobile-only {
+    display: none;
+  }
 }

@@ -88,6 +88,22 @@
   color: var(--text-muted);
 }
 
+.nav-section-logout {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.nav-item-logout {
+  color: #f87171;
+}
+
+.nav-item-logout:hover {
+  background-color: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.25);
+  color: #f87171;
+}
+
 /* Desktop layout - sidebar visible, flex child in fixed shell */
 @media (min-width: 1200px) {
   .sidebar {
