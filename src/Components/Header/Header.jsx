@@ -1,11 +1,24 @@
 import './Header.css'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export const Header = ({ onSearch, onMenuToggle }) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false)
+  const [dotsOpen, setDotsOpen] = useState(false)
+  const dotsRef = useRef(null)
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!dotsOpen) return
+    const handleClick = (e) => {
+      if (dotsRef.current && !dotsRef.current.contains(e.target)) {
+        setDotsOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [dotsOpen])
 
   const handleSearch = (e) => {
     e.preventDefault()
@@ -86,6 +99,30 @@ export const Header = ({ onSearch, onMenuToggle }) => {
               <path d="m21 21-4.35-4.35" />
             </svg>
           </button>
+
+          <div className="dots-wrapper" ref={dotsRef}>
+            <button type="button" className="menu-dots" aria-label="More options" onClick={() => setDotsOpen((o) => !o)}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="5" r="1.6" />
+                <circle cx="12" cy="12" r="1.6" />
+                <circle cx="12" cy="19" r="1.6" />
+              </svg>
+            </button>
+            {dotsOpen && (
+              <div className="dots-dropdown">
+                <button type="button" className="dots-dropdown-item" onClick={() => { setDotsOpen(false) }}>Login</button>
+                <button type="button" className="dots-dropdown-item dots-dropdown-accent" onClick={() => { setDotsOpen(false) }}>Sign up</button>
+              </div>
+            )}
+          </div>
+
+          <button type="button" className="login-btn">
+            Login
+          </button>
+          <button type="button" className="signup-btn">
+            Sign up
+          </button>
+
           <button
             type="button"
             className="menu-button menu-button-right"
@@ -95,19 +132,6 @@ export const Header = ({ onSearch, onMenuToggle }) => {
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <path d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-          </button>
-          <button type="button" className="menu-dots" aria-label="More options">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-              <circle cx="12" cy="5" r="1.6" />
-              <circle cx="12" cy="12" r="1.6" />
-              <circle cx="12" cy="19" r="1.6" />
-            </svg>
-          </button>
-          <button type="button" className="login-btn">
-            Login
-          </button>
-          <button type="button" className="signup-btn">
-            Sign up
           </button>
         </div>
       </div>

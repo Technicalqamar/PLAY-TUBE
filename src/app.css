@@ -47,15 +47,32 @@
   display: none;
 }
 
-@media (min-width: 1200px) {
-  .sidebar-backdrop {
-    display: none;
-  }
-}
-
 @media (max-width: 768px) {
   .sidebar-backdrop {
     top: 56px;
+  }
+}
+
+/* Desktop: fixed viewport shell, only main scrolls */
+@media (min-width: 1200px) {
+  .app-shell {
+    height: 100vh;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .app-body {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .app-main {
+    overflow-y: auto;
+    min-height: 0;
+  }
+
+  .sidebar-backdrop {
+    display: none;
   }
 }
 
