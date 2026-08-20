@@ -4,6 +4,12 @@
   margin: 0 auto;
 }
 
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 .vp-layout {
   display: grid;
   grid-template-columns: 1fr 380px;
@@ -492,7 +498,7 @@
 
 @media (max-width: 768px) {
   .vp {
-    padding: 16px 14px 40px;
+    padding: 16px 14px 24px;
   }
 
   .vp-title {
@@ -545,13 +551,47 @@
 
   .vp-mobile-related .videos-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px 12px;
+    gap: 16px 10px;
   }
 }
 
 @media (max-width: 480px) {
   .vp {
-    padding: 14px 12px 32px;
+    padding: 14px 12px 20px;
+  }
+
+  .vp-title {
+    font-size: 17px;
+  }
+
+  .vp-actions {
+    gap: 4px;
+    padding: 10px 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .vp-action-btn {
+    padding: 6px 10px;
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .vp-channel {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .vp-subscribe-btn {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .vp-description {
+    padding: 12px;
+    margin: 12px 0 0;
   }
 
   .vp-mobile-related .videos-grid {

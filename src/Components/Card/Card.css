@@ -146,3 +146,34 @@
     font-size: 11px;
   }
 }
+
+@media (max-width: 480px) {
+  .card-title {
+    font-size: 13px;
+    -webkit-line-clamp: 2;
+  }
+
+  .card-channel {
+    font-size: 12px;
+  }
+
+  .card-meta {
+    font-size: 11px;
+  }
+
+  .card-body {
+    gap: 8px;
+    padding-top: 8px;
+  }
+
+  .card-avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .card-duration {
+    font-size: 11px;
+    padding: 1px 5px;
+  }
+}

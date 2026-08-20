@@ -50,16 +50,20 @@
 
 @media (max-width: 768px) {
   .home {
-    padding: 16px 14px 40px;
+    padding: 16px 14px 24px;
   }
 
   .home-heading {
     font-size: 18px;
   }
+
+  .videos-grid {
+    gap: 16px 10px;
+  }
 }
 
 @media (max-width: 480px) {
   .home {
-    padding: 14px 12px 32px;
+    padding: 14px 12px 20px;
   }
 }

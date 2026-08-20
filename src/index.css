@@ -44,6 +44,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg);
   color: var(--text);
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 code {
@@ -112,6 +117,12 @@ img {
   display: grid;
   grid-template-columns: 1fr;
   gap: 28px 20px;
+}
+
+@media (max-width: 560px) {
+  .videos-grid {
+    gap: 18px 12px;
+  }
 }
 
 @media (min-width: 560px) {

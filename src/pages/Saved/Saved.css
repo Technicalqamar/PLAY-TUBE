@@ -90,7 +90,7 @@
 
 @media (max-width: 768px) {
   .saved {
-    padding: 16px 14px 40px;
+    padding: 16px 14px 24px;
   }
 
   .saved-heading {
@@ -100,6 +100,6 @@
 
 @media (max-width: 480px) {
   .saved {
-    padding: 14px 12px 32px;
+    padding: 14px 12px 20px;
   }
 }

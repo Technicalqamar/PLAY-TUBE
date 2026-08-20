@@ -105,7 +105,7 @@ export const Sidebar = ({ isOpen, onClose }) => {
         </div>
 
         <div className="nav-footer">
-          <p>© 2026 PLAY</p>
+          <p>© 2026 PlayTube</p>
         </div>
       </nav>
     </div>

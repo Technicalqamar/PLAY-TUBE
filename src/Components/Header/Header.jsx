@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const Header = ({ onSearch, onMenuToggle }) => {
   const [searchQuery, setSearchQuery] = useState('')
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false)
   const navigate = useNavigate()
 
   const handleSearch = (e) => {
@@ -12,23 +13,13 @@ export const Header = ({ onSearch, onMenuToggle }) => {
     if (!q) return
     if (onSearch) onSearch(q)
     navigate(`/search?q=${encodeURIComponent(q)}`)
+    setMobileSearchOpen(false)
   }
 
   return (
     <header className="header">
       <div className="header-container">
         <div className="header-left">
-          <button
-            type="button"
-            className="menu-button"
-            onClick={onMenuToggle}
-            aria-label="Toggle navigation menu"
-          >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-
           <div
             className="logo"
             role="button"
@@ -37,12 +28,36 @@ export const Header = ({ onSearch, onMenuToggle }) => {
             onKeyDown={(e) => e.key === 'Enter' && navigate('/')}
           >
             <span className="logo-mark">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M8 5.14v13.72c0 .9.98 1.45 1.75.98l11.1-6.86a1.14 1.14 0 0 0 0-1.96L9.75 4.16A1.14 1.14 0 0 0 8 5.14z" />
               </svg>
             </span>
-            <h1>PLAY</h1>
+            <h1>PlayTube</h1>
           </div>
+        </div>
+
+        <div className={`mobile-search-overlay ${mobileSearchOpen ? 'open' : ''}`}>
+          <form className="mobile-search-form" onSubmit={handleSearch}>
+            <button type="button" className="mobile-search-back" onClick={() => setMobileSearchOpen(false)} aria-label="Close search">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <input
+              type="text"
+              className="mobile-search-input"
+              placeholder="Search videos..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              autoFocus={mobileSearchOpen}
+            />
+            <button type="submit" className="mobile-search-submit" aria-label="Search">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+            </button>
+          </form>
         </div>
 
         <form className="search-form" onSubmit={handleSearch}>
@@ -65,6 +80,22 @@ export const Header = ({ onSearch, onMenuToggle }) => {
         </form>
 
         <div className="header-actions">
+          <button type="button" className="mobile-search-btn" onClick={() => setMobileSearchOpen(true)} aria-label="Search">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            className="menu-button menu-button-right"
+            onClick={onMenuToggle}
+            aria-label="Toggle navigation menu"
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
           <button type="button" className="menu-dots" aria-label="More options">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
               <circle cx="12" cy="5" r="1.6" />

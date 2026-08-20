@@ -124,7 +124,7 @@
 
 @media (max-width: 768px) {
   .search {
-    padding: 16px 14px 40px;
+    padding: 16px 14px 24px;
   }
 
   .results-heading h2 {
@@ -138,11 +138,15 @@
   .empty-state p {
     font-size: 14px;
   }
+
+  .videos-grid {
+    gap: 16px 10px;
+  }
 }
 
 @media (max-width: 480px) {
   .search {
-    padding: 14px 12px 32px;
+    padding: 14px 12px 20px;
   }
 
   .empty-icon {

@@ -164,15 +164,16 @@ export const VideoPlayer = () => {
         <h3 className="vp-related-title">Related Videos</h3>
         <div className="videos-grid">
           {related.map((v) => (
-            <Card
-              key={v.id}
-              image={v.image}
-              title={v.title}
-              channel={v.channel}
-              views={v.views}
-              timestamp={v.timestamp}
-              duration={v.duration}
-            />
+            <Link key={v.id} to={`/video/${v.id}`} className="card-link">
+              <Card
+                image={v.image}
+                title={v.title}
+                channel={v.channel}
+                views={v.views}
+                timestamp={v.timestamp}
+                duration={v.duration}
+              />
+            </Link>
           ))}
         </div>
       </div>
