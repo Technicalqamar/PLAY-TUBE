@@ -6,6 +6,7 @@ import { Home } from './pages/Home/Home'
 import { Search } from './pages/Search/Search'
 import { VideoPlayer } from './pages/VideoPlayer/VideoPlayer'
 import { Saved } from './pages/Saved/Saved'
+import { ChannelPage } from './pages/Channel/ChannelPage'
 import './app.css'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/search" element={<Search key={location.search} />} />
             <Route path="/video/:id" element={<VideoPlayer />} />
+            <Route path="/channel/:channelId" element={<ChannelPage />} />
             <Route path="/saved" element={<Saved />} />
           </Routes>
         </main>

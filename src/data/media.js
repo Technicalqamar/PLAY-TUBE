@@ -98,3 +98,129 @@ export const searchVideos = (query) => {
 }
 
 export const getVideoById = (id) => videos.find((v) => v.id === Number(id))
+
+const channels = [
+  {
+    id: 'codejourney',
+    name: 'CodeJourney',
+    description: 'Helping developers master modern web technologies through in-depth tutorials, roadmaps, and project-based learning.',
+    subscribers: '85.2K',
+    videoCount: 48,
+    joined: 'Jan 2023',
+    totalViews: '4.2M',
+  },
+  {
+    id: 'creatordiaries',
+    name: 'CreatorDiaries',
+    description: 'Behind-the-scenes of building a creator business. Revenue breakdowns, growth strategies, and honest discussions about the creator economy.',
+    subscribers: '320K',
+    videoCount: 124,
+    joined: 'Mar 2021',
+    totalViews: '70M',
+  },
+  {
+    id: 'denonews',
+    name: 'DenoNews',
+    description: 'Your go-to source for Deno, JavaScript runtime updates, and modern TypeScript development.',
+    subscribers: '42.1K',
+    videoCount: 31,
+    joined: 'Sep 2023',
+    totalViews: '1.8M',
+  },
+  {
+    id: 'webdevlab',
+    name: 'WebDevLab',
+    description: 'Practical web development tutorials covering real-time applications, APIs, and fullstack engineering.',
+    subscribers: '28.5K',
+    videoCount: 27,
+    joined: 'Jun 2023',
+    totalViews: '980K',
+  },
+  {
+    id: 'cloudcraft',
+    name: 'CloudCraft',
+    description: 'Cloud infrastructure, DevOps tools, and platform engineering tutorials for modern developers.',
+    subscribers: '19.8K',
+    videoCount: 22,
+    joined: 'Nov 2023',
+    totalViews: '620K',
+  },
+  {
+    id: 'frontendfoundry',
+    name: 'FrontendFoundry',
+    description: 'Complete frontend development courses. React, CSS, JavaScript fundamentals and advanced patterns explained clearly.',
+    subscribers: '97.4K',
+    videoCount: 63,
+    joined: 'Jul 2022',
+    totalViews: '8.5M',
+  },
+  {
+    id: 'googletech',
+    name: 'GoogleTech',
+    description: 'Coverage of Google developer products, cloud services, AI tools, and engineering innovations.',
+    subscribers: '180K',
+    videoCount: 89,
+    joined: 'Feb 2022',
+    totalViews: '22M',
+  },
+  {
+    id: 'aibriefs',
+    name: 'AIBriefs',
+    description: 'Breaking down AI news, new models, developer tools, and what they mean for building intelligent applications.',
+    subscribers: '55.3K',
+    videoCount: 41,
+    joined: 'Aug 2023',
+    totalViews: '3.1M',
+  },
+  {
+    id: 'flutterflow',
+    name: 'FlutterFlow',
+    description: 'Flutter and Dart tutorials, case studies, performance optimization, and cross-platform mobile development.',
+    subscribers: '61.7K',
+    videoCount: 38,
+    joined: 'Apr 2022',
+    totalViews: '5.4M',
+  },
+  {
+    id: 'datadive',
+    name: 'DataDive',
+    description: 'Deep dives into database internals, data engineering, and the systems that power modern applications.',
+    subscribers: '210K',
+    videoCount: 56,
+    joined: 'Jan 2022',
+    totalViews: '18M',
+  },
+  {
+    id: 'startupstories',
+    name: 'StartupStories',
+    description: 'Building developer products from zero to millions. Lessons on product, pricing, and scaling SaaS.',
+    subscribers: '88.6K',
+    videoCount: 45,
+    joined: 'May 2022',
+    totalViews: '6.8M',
+  },
+  {
+    id: 'internals',
+    name: 'Internals',
+    description: 'Understanding how computers work. Browsers, databases, operating systems, and software engineering fundamentals.',
+    subscribers: '165K',
+    videoCount: 71,
+    joined: 'Oct 2021',
+    totalViews: '15M',
+  },
+]
+
+export const channelsList = channels
+
+export const getChannelById = (id) => channels.find((c) => c.id === id)
+
+export const getChannelVideos = (channelId) => {
+  const channel = channels.find((c) => c.id === channelId)
+  if (!channel) return []
+  return videos.filter((v) => v.channel === channel.name)
+}
+
+export const getChannelIdByName = (name) => {
+  const channel = channels.find((c) => c.name === name)
+  return channel ? channel.id : null
+}

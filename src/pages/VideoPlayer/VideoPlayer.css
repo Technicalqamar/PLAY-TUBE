@@ -172,6 +172,12 @@
   font-size: 16px;
   font-weight: 600;
   color: var(--text);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.vp-channel-name:hover {
+  color: var(--accent-bright);
 }
 
 .vp-channel-subs {
@@ -467,35 +473,18 @@
   box-shadow: 0 6px 20px rgba(134, 59, 255, 0.4);
 }
 
-/* ── Desktop: independent scroll for related column ── */
+/* ── Desktop: sticky related column with independent scroll ── */
 @media (min-width: 1200px) {
-  .vp {
-    height: 100vh;
-    overflow: hidden;
-    padding-bottom: 0;
-  }
-
   .vp-layout {
-    display: flex;
-    height: 100%;
     gap: 28px;
   }
 
-  .vp-main {
-    flex: 1;
-    min-width: 0;
-    overflow-y: auto;
-    padding-bottom: 40px;
-  }
-
   .vp-related {
-    position: relative;
-    top: auto;
-    width: 380px;
-    flex-shrink: 0;
+    position: sticky;
+    top: 88px;
+    align-self: start;
+    max-height: calc(100vh - 112px);
     overflow-y: auto;
-    height: 100%;
-    padding-bottom: 24px;
   }
 }
 
@@ -616,9 +605,8 @@
   }
 
   .vp-subscribe-btn {
-    width: 100%;
-    text-align: center;
-    padding: 10px;
+    padding: 7px 16px;
+    font-size: 13px;
   }
 
   .vp-description {

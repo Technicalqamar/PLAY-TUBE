@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Card } from '../../Components/Card/Card'
 import { SaveToPlaylistModal } from '../../Components/SaveToPlaylistModal/SaveToPlaylistModal'
-import { getVideoById, homeVideos } from '../../data/media'
+import { getVideoById, homeVideos, getChannelIdByName } from '../../data/media'
 import './VideoPlayer.css'
 
 export const VideoPlayer = () => {
@@ -93,7 +93,9 @@ export const VideoPlayer = () => {
           <div className="vp-channel">
             <div className="vp-channel-avatar">{avatarLetter}</div>
             <div className="vp-channel-info">
-              <h3 className="vp-channel-name">{video.channel}</h3>
+              <Link to={`/channel/${getChannelIdByName(video.channel)}`} className="vp-channel-name">
+                {video.channel}
+              </Link>
               <p className="vp-channel-subs">{video.subscribers || '50K'} subscribers</p>
             </div>
             <button

@@ -1,0 +1,256 @@
+.ch-info {
+  display: flex;
+  gap: 20px;
+  padding: 0 0 4px;
+  align-items: flex-start;
+  margin-top: -38px;
+  position: relative;
+}
+
+.ch-info-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--accent-grad);
+  color: #fff;
+  font-size: 30px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--bg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.ch-info-body {
+  flex: 1;
+  min-width: 0;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ch-info-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ch-info-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ch-info-name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.ch-info-verified {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.ch-info-handle {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.ch-info-description {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ch-info-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.ch-info-subscribe {
+  padding: 10px 24px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--accent-grad);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(134, 59, 255, 0.4);
+  flex-shrink: 0;
+}
+
+.ch-info-subscribe:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 20px rgba(134, 59, 255, 0.55);
+}
+
+.ch-info-subscribed {
+  background: var(--surface-2);
+  color: var(--text-secondary);
+  box-shadow: none;
+}
+
+.ch-info-subscribed:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.ch-info-bell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.ch-info-bell:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+  border-color: var(--border-hover, var(--border));
+}
+
+@media (max-width: 1024px) {
+  .ch-info {
+    margin-top: -32px;
+  }
+
+  .ch-info-avatar {
+    width: 72px;
+    height: 72px;
+    font-size: 26px;
+  }
+
+  .ch-info-body {
+    padding-top: 34px;
+  }
+
+  .ch-info-name {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ch-info {
+    gap: 14px;
+    margin-top: -28px;
+  }
+
+  .ch-info-avatar {
+    width: 64px;
+    height: 64px;
+    font-size: 24px;
+    border-width: 2px;
+  }
+
+  .ch-info-body {
+    padding-top: 30px;
+  }
+
+  .ch-info-name {
+    font-size: 20px;
+  }
+
+  .ch-info-handle {
+    font-size: 12px;
+  }
+
+  .ch-info-description {
+    font-size: 13px;
+  }
+
+  .ch-info-subscribe {
+    padding: 9px 20px;
+    font-size: 13px;
+  }
+
+  .ch-info-bell {
+    width: 36px;
+    height: 36px;
+  }
+
+  .ch-info-bell svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ch-info {
+    gap: 12px;
+    margin-top: -24px;
+  }
+
+  .ch-info-avatar {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+  }
+
+  .ch-info-body {
+    padding-top: 28px;
+    gap: 6px;
+  }
+
+  .ch-info-name {
+    font-size: 18px;
+  }
+
+  .ch-info-handle {
+    font-size: 12px;
+  }
+
+  .ch-info-description {
+    display: none;
+  }
+
+  .ch-info-actions {
+    width: 100%;
+  }
+
+  .ch-info-subscribe {
+    padding: 8px 18px;
+    font-size: 13px;
+    flex: 1;
+    text-align: center;
+  }
+
+  .ch-info-bell {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  .ch-info-bell svg {
+    width: 14px;
+    height: 14px;
+  }
+}
